@@ -1,0 +1,47 @@
+<html>
+   <head>
+      <title>HTML5 Example</title>
+      <script type="text/javascript" src="sprite.js"></script>
+      <script type="text/javascript" src="spriteManager.js"></script>
+	  <script type="text/javascript" src="collision_detection/quadNode.js"></script>
+	  <script type="text/javascript" src="collision_detection/quadTree.js"></script>
+      <script type="text/javascript">
+	  var marioSprites = {
+		"walkRight" : new Sprite(138, 32, "mario",  "mario", 23, 32),
+		"walkLeft": new Sprite(138, 32, "mario3", "mario", 23, 32)
+	  };
+	  marioSprites["walkRight"].visible = true;
+	  marioSprites["walkRight"].x = 100;
+	  marioSprites["walkRight"].y = 100;
+	  marioSprites["walkLeft"].onMouseDown = function(e){console.log(this.spriteName + "Left clicked");spriteManager.update(marioSprites["walkRight"], "mario");}
+	  marioSprites["walkRight"].onMouseDown = function(e){console.log(this.spriteName + "Right clicked");spriteManager.update(marioSprites["walkLeft"], "mario");}
+	  
+
+	  var block = new Sprite(138, 32, "mario2", "block", 23, 32);
+	  block.visible = true;
+	  block.x = 115;
+	  block.y = 100;
+		function initSprites() {
+		  spriteManager.register("mario", marioSprites["walkRight"]);
+		  spriteManager.register("block", block);
+		  
+		}
+	  
+      </script>
+   </head>
+   <body onload="spriteManager.init(initSprites)">
+      <canvas id="canvas" width="800" height="600">
+         Canvas is not supported.
+      </canvas>
+      <div style="visibility:hidden">
+		<img id= "mario"  src="sprite/mario.png" />
+		<img id= "mario2" src="sprite/mario2.png" />
+		<img id= "mario3" src="sprite/mario3.png" />
+	  </div>
+      <div style="visibility:hidden">
+         <canvas id="bgCanvas" width="800" height="600">
+            Canvas is not supported.
+         </canvas>
+	 </div>
+   </body>
+</html>
