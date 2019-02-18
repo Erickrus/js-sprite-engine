@@ -122,4 +122,4 @@ function QuadTree(width, height, aLevel) {
    };
 }
 
-var quadTree = new QuadTree(128, 128, 2);
+//var quadTree = new QuadTree(128, 128, 2);
